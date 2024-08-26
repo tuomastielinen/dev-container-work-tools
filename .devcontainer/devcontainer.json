@@ -1,0 +1,45 @@
+{
+	"name": "Ubuntu",
+	"build": {
+		"dockerfile": "Containerfile"
+	},
+	"mounts": [
+		"source=${localEnv:HOME},target=/host-home-folder,type=bind,consistency=cached"
+	],
+	"features": {
+        "ghcr.io/rjfmachado/devcontainer-features/cloud-native:1": {},
+        "ghcr.io/devcontainers/features/python:1": {},
+        "ghcr.io/hspaans/devcontainer-features/ansible-lint:1": {},
+        "ghcr.io/akhildevelops/devcontainer-features/pip:0": {
+            "PACKAGES": "ansible"
+        },
+        "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+            "jq": "latest",
+            "yq": "latest"
+        },
+        "ghcr.io/gickis/devcontainer-features/kubeseal:1": {},
+        "ghcr.io/schlich/devcontainer-features/starship": {},
+        "ghcr.io/paul-gilber/devcontainer-features/buildah-apt-get:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
+				"ansible.ansible.path": "/usr/local/bin/ansible"
+			},
+			"extensions": [
+                "adamhartford.vscode-base64",
+                "coolbear.systemd-unit-file",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "GitHub.vscode-github-actions",
+                "jlcs-es.x509-parser",
+                "mads-hartmann.bash-ide-vscode",
+                "ms-azuretools.vscode-docker",
+                "redhat.ansible",
+                "redhat.vscode-yaml",
+                "yzhang.markdown-all-in-one"
+			]
+		}
+	}
+}
