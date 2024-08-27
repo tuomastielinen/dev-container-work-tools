@@ -26,7 +26,8 @@
         },
         "ghcr.io/gickis/devcontainer-features/kubeseal:1": {},
         "ghcr.io/schlich/devcontainer-features/starship": {},
-        "ghcr.io/paul-gilber/devcontainer-features/buildah-apt-get:1": {}
+        "ghcr.io/paul-gilber/devcontainer-features/buildah-apt-get:1": {},
+        "ghcr.io/jpawlowski/devcontainer-features/cascadia-code:1": {}
     },
 
     // Customizations for VS Code
