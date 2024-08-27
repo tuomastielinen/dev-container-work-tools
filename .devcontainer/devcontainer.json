@@ -1,12 +1,19 @@
 {
-	"name": "Ubuntu",
-	"build": {
-		"dockerfile": "Containerfile"
-	},
-	"mounts": [
-		"source=${localEnv:HOME},target=/host-home-folder,type=bind,consistency=cached"
-	],
-	"features": {
+    // Name of the dev container
+    "name": "Work tools",
+
+    // Build configuration
+    "build": {
+        "dockerfile": "Containerfile"
+    },
+
+    // Mounts configuration
+    "mounts": [
+        "source=${localEnv:HOME},target=/host-home-folder,type=bind,consistency=cached"
+    ],
+
+    // Features to be included in the dev container
+    "features": {
         "ghcr.io/rjfmachado/devcontainer-features/cloud-native:1": {},
         "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/hspaans/devcontainer-features/ansible-lint:1": {},
@@ -20,26 +27,38 @@
         "ghcr.io/gickis/devcontainer-features/kubeseal:1": {},
         "ghcr.io/schlich/devcontainer-features/starship": {},
         "ghcr.io/paul-gilber/devcontainer-features/buildah-apt-get:1": {}
-	},
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
-				"ansible.ansible.path": "/usr/local/bin/ansible"
-			},
-			"extensions": [
+    },
+
+    // Customizations for VS Code
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "ansible.validation.lint.path": "/usr/local/py-utils/bin/ansible-lint",
+                "ansible.ansible.path": "/usr/local/bin/ansible"
+            },
+            "extensions": [
+                // General extensions
                 "adamhartford.vscode-base64",
                 "coolbear.systemd-unit-file",
+                "yzhang.markdown-all-in-one",
+
+                // GitHub extensions
                 "GitHub.copilot",
                 "GitHub.copilot-chat",
                 "GitHub.vscode-github-actions",
+
+                // Security extensions
                 "jlcs-es.x509-parser",
+
+                // Language support extensions
                 "mads-hartmann.bash-ide-vscode",
-                "ms-azuretools.vscode-docker",
                 "redhat.ansible",
                 "redhat.vscode-yaml",
-                "yzhang.markdown-all-in-one"
-			]
-		}
-	}
+
+                // Docker and Kubernetes extensions
+                "ms-azuretools.vscode-docker",
+                "ms-kubernetes-tools.vscode-kubernetes-tools"
+            ]
+        }
+    }
 }

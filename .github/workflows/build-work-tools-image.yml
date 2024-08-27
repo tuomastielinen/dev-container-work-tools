@@ -1,0 +1,51 @@
+name: Build work tools dev container 
+
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+  # Schedule the workflow to run at 5:30 AM every day
+  schedule:
+    - cron:  '30 5 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v4
+
+      # Login to GitHub Container Registry
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and push the dev container image
+      - name: Pre-build dev container image
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/tuomastielinen/dev-container-work-tools/devcontainer
+          cacheFrom: ghcr.io/tuomastielinen/dev-container-work-tools/devcontainer
+          push: always
+
+      # Notify on failure
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { context, github } = require('@actions/github');
+            const issueTitle = `Build failed: ${context.workflow}`;
+            const issueBody = `The build for the workflow ${context.workflow} has failed. Please check the logs for more details.`;
+            await github.issues.create({
+              ...context.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['bug']
+            });
+    
