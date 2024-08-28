@@ -42,6 +42,8 @@
                 "adamhartford.vscode-base64",
                 "coolbear.systemd-unit-file",
                 "yzhang.markdown-all-in-one",
+                "eamodio.gitlens",
+                "hangxingliu.vscode-systemd-support",
 
                 // GitHub extensions
                 "GitHub.copilot",
@@ -55,6 +57,7 @@
                 "mads-hartmann.bash-ide-vscode",
                 "redhat.ansible",
                 "redhat.vscode-yaml",
+                "timonwong.shellcheck",
 
                 // Docker and Kubernetes extensions
                 "ms-azuretools.vscode-docker",
