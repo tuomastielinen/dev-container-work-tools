@@ -20,9 +20,11 @@
         "ghcr.io/akhildevelops/devcontainer-features/pip:0": {
             "PACKAGES": "ansible"
         },
-        "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
-            "jq": "latest",
-            "yq": "latest"
+        "ghcr.io/eitsupi/devcontainer-features/jq-likes:1": {
+            "jqVersion": "latest",
+            "yqVersion": "latest",
+            "gojqVersion": "none",
+            "xqVersion": "none"
         },
         "ghcr.io/gickis/devcontainer-features/kubeseal:1": {},
         "ghcr.io/schlich/devcontainer-features/starship": {},
