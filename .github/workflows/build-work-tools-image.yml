@@ -8,6 +8,7 @@ on: # rebuild any PRs and main branch changes
   # Schedule the workflow to run at 5:30 AM every day
   schedule:
     - cron:  '30 5 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
